@@ -29,9 +29,8 @@ public class basededatos {
         
     }
 
-     public void insert(String codigo, String email,String pass,String nombre,String apellido,String dpi,String nit,StringBuffer salida){
+     public String insert(String codigo, String email,String pass,String nombre,String apellido,String dpi,String nit){
         String sql = "INSERT INTO USUARIOS(ID_EMPLEADO,PASS,NOMBRE,APELLIDO,DPI,NIT,EMAIL)  VALUES(?,?,?,?,?,?,?)";
-         
         try{
              prstmt = cn.prepareStatement(sql); 
             prstmt.setString(1, codigo);
@@ -45,18 +44,19 @@ public class basededatos {
             
              int resultado = prstmt.executeUpdate(); 
                 if(resultado > 0){
-                    salida.append("1");
+                    return "1";
                 }else{
-                    salida.append("0");
+                    return"0";
                 }
        }catch(SQLException e){
             String error = e.getMessage();  
             if(error.indexOf("ORA-00001") != -1){
-                salida.append("ORA-00001");
+                return "ORA-00001";
             }else{
-                salida.append(error);
+                return "0";
             }
         }
+        
 
     }
     

@@ -24,9 +24,16 @@
         <div class=" bg-light d-flex justify-content-center p-5 border border-dark">
           
             <div class="divcont ">
-                <div class="alert alert-success" id="mensaje" role="alert" style="display: none;" >
-                   Registro Enviado
-                </div>
+                <div class="alert alert-success" id="mensajeRegistroO" role="alert" style="display: none;" >
+                   Registro relizado Exitosamente
+                </div> <div class="alert alert-danger" id="mensajeRegistroI" role="alert" style="display: none;" >
+                    Datos Incorrectos
+                 </div>
+                 <div class="alert alert-success" id="mensajeRegistroO" role="alert" style="display: none;" >
+                    Registro relizado Exitosamente
+                 </div> <div class="alert alert-danger" id="mensajeRegistroI" role="alert" style="display: none;" >
+                     Datos Incorrectos
+                  </div>
                 <h3>{{title}}</h3>
                 <form @submit.prevent="sendForm()">
                   <div class="form-group">
@@ -51,7 +58,7 @@
                       <input type="text" id="nit" v-if="type==1"  placeholder="Ingrese su NIT" v-model="nit" >
                   </div>
                   <div class="form-group">
-                      <input type="text" id="dpi" v-if="type==1"  placeholder="Ingrese su Codigo" v-model="codigo" >
+                      <input type="text" id="codigo" v-if="type==1"  placeholder="Ingrese su Codigo" v-model="codigo" >
                   </div>
                         
                       <div class="form-group">  

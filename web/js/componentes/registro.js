@@ -25,6 +25,7 @@ const login = new Vue({
         this.dpi ="";
         this.nit ="";  
        },
+       typeC:function(){ this.type="1";},
        
         sendForm(){
             if(this.validaType()){
@@ -59,14 +60,20 @@ const login = new Vue({
                     "dpi":this.dpi,
                     "nit":this.nit,
                 },      
-            success: function(data)
-                {      
-                    
-                    $("#mensaje").fadeToggle(3000);
-                    $("#mensaje").fadeToggle(3000);
-                    login.reset();
+            success: function(respuesta){    
+            
+                    if(respuesta=="1"){
+                        $("#mensajeRegistroO").fadeToggle(3000);
+                        $("#mensajeRegistroO").fadeToggle(3000);
+                        login.reset();
+                    }else{
+                        $("#mensajeRegistroI").fadeToggle(3000);
+                        $("#mensajeRegistroI").fadeToggle(3000);
+                        login.type();
+                    }
+                  
                 },
-                error: function(data) {  
+                error: function(respuesta) {  
                    
                         alert("Something went wrong");
             }

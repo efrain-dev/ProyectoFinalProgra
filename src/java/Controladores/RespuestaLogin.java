@@ -16,42 +16,35 @@ public class RespuestaLogin extends HttpServlet {
  
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-          Writer ajaxSalida =  response.getWriter(); 
-          StringBuffer respuesta =  new StringBuffer(); 
+     
+       String respuesta;
+        try (PrintWriter out = response.getWriter()) {
+      
         response.setContentType("text/html;charset=UTF-8");
         String control,codigo, email,pass,nombre, apellido, dpi,nit; 
         control = request.getParameter("control");
-        codigo = request.getParameter("codigo");
-        email = request.getParameter("email");
-        pass = request.getParameter("pass");
-        nombre = request.getParameter("nombre");
-        apellido = request.getParameter("apellido");
-        dpi = request.getParameter("dpi");
-        nit = request.getParameter("nit");
-        basededatos bs = new basededatos();
+    
+        
+         
+        
+       
          if(control.equals("INSERT")){
-              bs.insert(codigo, email, pass,nombre,apellido,dpi,nit, respuesta);
-                respuesta.append("1");
+              basededatos bs = new basededatos();
+                codigo = request.getParameter("codigo");
+                email = request.getParameter("email");
+                pass = request.getParameter("pass");
+                nombre = request.getParameter("nombre");
+                apellido = request.getParameter("apellido");
+                dpi = request.getParameter("dpi");
+                nit = request.getParameter("nit");
+                
+             respuesta=(bs.insert(codigo, email, pass,nombre,apellido,dpi,nit));
+              out.append(respuesta);
                }else{
-                      respuesta.append("0");//dato no insertado
+  
                }
                 
-            ajaxSalida.write(respuesta.toString());
-            ajaxSalida.flush();
-            ajaxSalida.close();     
-       
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. 
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet RespuestaLogin</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet RespuestaLogin at " +nombre + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-            */
+      
         }
     }
 
