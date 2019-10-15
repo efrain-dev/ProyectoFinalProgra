@@ -1,12 +1,12 @@
 
 
-html,body{ padding: 0px; margin: 0px; width: 100%; height: 100vh; font-family: "Roboto"; color:#333;  }
+
 .divlogin{ 
  
     width: 100%; 
     height: 100vh; 
      
-    background: linear-gradient(150deg, #fa07bd,  #eff0f0, #945666);
+    background: linear-gradient(150deg, #07fa58,  #3dec08, #e3f9ff);
     background-size: 400% 300%;
     animation: BgGradient 5s ease infinite;
 }

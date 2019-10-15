@@ -21,7 +21,7 @@ public class basededatos {
     private Connection cn;
     private PreparedStatement prstmt = null;
     private ResultSet result = null;
-    
+    private String[][] usuario;
     public basededatos(){
         conn= new Conexion();
         cn=conn.conectar();
@@ -51,7 +51,7 @@ public class basededatos {
        }catch(SQLException e){
             String error = e.getMessage();  
             if(error.indexOf("ORA-00001") != -1){
-                return "ORA-00001";
+                return "0";
             }else{
                 return "0";
             }
@@ -59,5 +59,35 @@ public class basededatos {
         
 
     }
+    public String login(String email,String pass){
+        String sql = "SELECT *  FROM USUARIOS WHERE EMAIL='efraindeleon@outlook.com' AND PASS ='Aa30139428'";
+        try{
+             prstmt = cn.prepareStatement(sql); 
+        
+         
+            result = prstmt.executeQuery();  
+                if(result !=null){
+                    this.usuario[0][0]=result.getString("NOMBRE");
+                    this.usuario[0][1]=result.getString("APELLIDO");
+                    return "Mundo";
+                }else{
+                    return"0";
+                }
+       }catch(SQLException e){
+            String error = e.getMessage();  
+            if(error.indexOf("ORA-00001") != -1){
+                return "0";
+            }else{
+                return "0";
+            }
+        }
+   
+        
+          
     
+    }
+    public String[][] obtenerUsuarios(){    
+    return this.usuario;
+}
+
 }

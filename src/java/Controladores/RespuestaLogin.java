@@ -16,7 +16,8 @@ public class RespuestaLogin extends HttpServlet {
  
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-     
+     String[][] matriz_usuarios;
+     basededatos bs = new basededatos();
        String respuesta;
         try (PrintWriter out = response.getWriter()) {
       
@@ -29,7 +30,7 @@ public class RespuestaLogin extends HttpServlet {
         
        
          if(control.equals("INSERT")){
-              basededatos bs = new basededatos();
+
                 codigo = request.getParameter("codigo");
                 email = request.getParameter("email");
                 pass = request.getParameter("pass");
@@ -40,8 +41,13 @@ public class RespuestaLogin extends HttpServlet {
                 
              respuesta=(bs.insert(codigo, email, pass,nombre,apellido,dpi,nit));
               out.append(respuesta);
-               }else{
-  
+               }
+         if(control.equals("LOGIN")){
+                email = request.getParameter("email");
+                pass = request.getParameter("pass");
+                respuesta=(bs.login(email, pass));
+                matriz_usuarios= bs.obtenerUsuarios();
+                response.getWriter().println("hola");
                }
                 
       

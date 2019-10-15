@@ -1,3 +1,4 @@
+
 const login = new Vue({
     el:"#login",
     data:{        
@@ -25,8 +26,8 @@ const login = new Vue({
         this.dpi ="";
         this.nit ="";  
        },
-       typeC:function(){ this.type="1";},
-       
+       typeC:function(){ this.type=1;},
+       typeA:function(){ this.type=0;},
         sendForm(){
             if(this.validaType()){
                 console.log(this);
@@ -82,26 +83,32 @@ const login = new Vue({
       
         },   
         btnLogin(){
-            var control="SELECT"
+            var control="LOGIN"
             $.ajax({
                 type: "POST", //METODO POST
                 url: "RespuestaLogin", //URL DESTINO
                 data:{
                     "control":control,
-                    "codigo":this.codigo,
                     "email":this.email,
                     "pass":this.password,
-                    "nombre":this.nombre,
-                    "apellido":this.apellido,
-                    "dpi":this.dpi,
-                    "nit":this.nit,
+              
                 },      
-            success: function(respuesta)
-                {           
-                        $("#mensaje").fadeToggle(3000);
-                        $("#mensaje").fadeToggle(3000);
+            success: function(data)
+                   
+                {    $("#div-resultado").html(data);
+                    console.log("Hola"+data);   
+                    if(data=="1"){
+                        $("#mensajeLoginO").fadeToggle(3000);
+                        $("#mensajeLoginO").fadeToggle(3000);
+                  
+                    
+                    }else{
+                        $("#mensajeLoginI").fadeToggle(3000);
+                        $("#mensajeLoginI").fadeToggle(3000);
+                        
+                    }
                 },
-                error: function(respuesta) {  
+                error: function(data) {  
                    
                         alert("Something went wrong");
             }
@@ -139,6 +146,21 @@ const login = new Vue({
         title(){
             return (this.type==0)?'Login':(this.type==1)?'Registro':'Recuperar contraseña';
         
+        },
+        jquery(){
+
+            
         }
     }
-});
+});  
+ function typea(){
+    login.typeA();
+
+ }
+ function typeC(){
+   login.typeC();
+ }
+ function rederigir(){
+    var url = "login.jsp"; 
+    $(location).attr('href',url);
+ }
