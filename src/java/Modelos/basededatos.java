@@ -75,13 +75,13 @@ public class basededatos {
              result = prstmt.executeQuery();
               if (result!=null){
                 while(result.next()){
-                sb.append(result.getString(1));
-                sb.append(result.getString(2));
-                sb.append(result.getString(3));
-                sb.append(result.getString(4));
-                sb.append(result.getString(5));
-                sb.append(result.getString(6));
-                sb.append(result.getString(7));
+                sb.append("<input type=\"text\" id=\"id\"value =\""+result.getString(1)+"\">");
+                sb.append("<input type=\"text\" id=\"contra\"value =\""+result.getString(2)+"\">");
+                sb.append("<input type=\"text\" id=\"nombre\"value =\""+result.getString(3)+"\">");
+                sb.append("<input type=\"text\" id=\"apellido\"value =\""+result.getString(4)+"\">");
+                sb.append("<input type=\"text\" id=\"nit\"value =\""+result.getString(5)+"\">");
+                sb.append("<input type=\"text\" id=\"dpi\"value =\""+result.getString(6)+"\">");
+                sb.append("<input type=\"text\" id=\"email\"value =\""+result.getString(7)+"\">");
               
                 }}
               else{

@@ -1,4 +1,4 @@
-
+var id,contra,nombre,apellido,dpi,nit,email;
 const login = new Vue({
     el:"#login",
     data:{        
@@ -26,8 +26,19 @@ const login = new Vue({
         this.dpi ="";
         this.nit ="";  
        },
+       prueba:function(){
+
+        this.codigo = id; 
+        this.password = contra;
+        this.nombre = nombre; 
+        this.apellido =apellido; 
+        this.dpi =dpi;
+        this.nit =nit;  
+        this.email= nombre;
+       },
        typeC:function(){ this.type=1;},
        typeA:function(){ this.type=0;},
+
         sendForm(){
             if(this.validaType()){
                 console.log(this);
@@ -101,7 +112,8 @@ const login = new Vue({
                     if(data!=""){
                         $("#mensajeLoginO").fadeToggle(3000);
                         $("#mensajeLoginO").fadeToggle(3000);
-                  
+                        datosL();
+                        login.prueba();
                     
                     }else{
                         $("#mensajeRegistroI").fadeToggle(3000);
@@ -148,10 +160,6 @@ const login = new Vue({
             return (this.type==0)?'Login':(this.type==1)?'Registro':'Recuperar contraseña';
         
         },
-        jquery(){
-
-            
-        }
     }
 });  
  function typea(){
@@ -164,4 +172,18 @@ const login = new Vue({
  function rederigir(){
     var url = "login.jsp"; 
     $(location).attr('href',url);
+ }
+
+ 
+
+ function datosL(){
+   console.log("hola te amao xdddfxfx")
+            id = $("#id").val();
+            contra = $("#contra").val();
+            nombre = $("#nombre").val();
+            apellido = $("#apellido").val();
+            dpi = $("#dpi").val();
+            nit = $("#nit").val();
+            email = $("#email").val();
+
  }

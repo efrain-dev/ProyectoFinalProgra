@@ -59,25 +59,25 @@
                         <input type="email" :class="{'error':validaEmail}" placeholder="Email" v-model="email">
                     </div>
                     <div class="form-group">
-                        <input type="password" id="pass" v-if="type!=2" :class="{'error':validaPassword}" placeholder="Contraseña" v-model="password" >
+                        <input type="password"  v-if="type!=2" :class="{'error':validaPassword}" placeholder="Contraseña" v-model="password" >
+                    </div>      
+                    <div class="form-group">
+                        <input type="password" v-if="type==1" :class="{'error':validaRepetirPassword}" placeholder="Repetir contraseña" v-model="passwordos" >
                     </div>
                     <div class="form-group">
-                        <input type="password" id="pass2" v-if="type==1" :class="{'error':validaRepetirPassword}" placeholder="Repetir contraseña" v-model="passwordos" >
+                        <input type="text"  v-if="type==1"  placeholder="Ingrese su nombre" v-model="nombre">
                     </div>
                     <div class="form-group">
-                        <input type="text" id="nombre" v-if="type==1"  placeholder="Ingrese su nombre" v-model="nombre" >
+                        <input type="text"  v-if="type==1"  placeholder="Ingrese su apellido" v-model="apellido" >
                     </div>
                     <div class="form-group">
-                        <input type="text" id="apellido" v-if="type==1"  placeholder="Ingrese su apellido" v-model="apellido" >
+                        <input type="text"  v-if="type==1"  placeholder="Ingrese su DPI" v-model="dpi" >
                     </div>
                     <div class="form-group">
-                        <input type="text"  id="dpi" v-if="type==1"  placeholder="Ingrese su DPI" v-model="dpi" >
+                        <input type="text" v-if="type==1"  placeholder="Ingrese su NIT" v-model="nit" >
                     </div>
                     <div class="form-group">
-                        <input type="text" id="nit" v-if="type==1"  placeholder="Ingrese su NIT" v-model="nit" >
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="codigo" v-if="type==1"  placeholder="Ingrese su Codigo" v-model="codigo" >
+                        <input type="text"  v-if="type==1"  placeholder="Ingrese su Codigo" v-model="codigo" >
                     </div>
                             
                         <div class="form-group">  
@@ -92,8 +92,7 @@
                     </form>
                     
                             
-                         <div id ="div-resultado">
-                            
+                         <div id ="div-resultado" style=display:none;>
                              <div>
                     
             
