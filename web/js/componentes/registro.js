@@ -21,7 +21,7 @@ const login = new Vue({
         this.pass =""; 
         this.password =""; 
         this.passwordos="";
-        this.nombre =""; 
+        this.nombre = ""; 
         this.apellido =""; 
         this.dpi ="";
         this.nit ="";  
@@ -96,15 +96,16 @@ const login = new Vue({
             success: function(data)
                    
                 {    $("#div-resultado").html(data);
-                    console.log("Hola"+data);   
-                    if(data=="1"){
+                    console.log("Hola",data);   
+                   
+                    if(data!=""){
                         $("#mensajeLoginO").fadeToggle(3000);
                         $("#mensajeLoginO").fadeToggle(3000);
                   
                     
                     }else{
-                        $("#mensajeLoginI").fadeToggle(3000);
-                        $("#mensajeLoginI").fadeToggle(3000);
+                        $("#mensajeRegistroI").fadeToggle(3000);
+                        $("#mensajeRegistroI").fadeToggle(3000);
                         
                     }
                 },

@@ -1,10 +1,13 @@
 package Controladores;
 
 
+import Modelos.Usuario;
 import Modelos.basededatos;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.Writer;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,11 +19,13 @@ public class RespuestaLogin extends HttpServlet {
  
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-     String[][] matriz_usuarios;
+    
      basededatos bs = new basededatos();
        String respuesta;
+       Writer ajaxSalida =  response.getWriter(); 
+       StringBuffer respuestaB =  new StringBuffer();
         try (PrintWriter out = response.getWriter()) {
-      
+            
         response.setContentType("text/html;charset=UTF-8");
         String control,codigo, email,pass,nombre, apellido, dpi,nit; 
         control = request.getParameter("control");
@@ -45,15 +50,15 @@ public class RespuestaLogin extends HttpServlet {
          if(control.equals("LOGIN")){
                 email = request.getParameter("email");
                 pass = request.getParameter("pass");
-                respuesta=(bs.login(email, pass));
-                matriz_usuarios= bs.obtenerUsuarios();
-                response.getWriter().println("hola");
-               }
-                
+                respuestaB.append(bs.login(email, pass));
+            
+            ajaxSalida.write(respuestaB.toString());
+            ajaxSalida.flush();
+            ajaxSalida.close(); 
       
         }
     }
-
+    }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -81,7 +86,6 @@ public class RespuestaLogin extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        
     }
 
     /**
@@ -94,4 +98,7 @@ public class RespuestaLogin extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-}
+    }
+
+
+

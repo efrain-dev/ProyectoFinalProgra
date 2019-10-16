@@ -10,6 +10,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -22,11 +24,12 @@ public class basededatos {
     private PreparedStatement prstmt = null;
     private ResultSet result = null;
     private String[][] usuario;
+     List<Usuario>lista = new ArrayList<>();
+    private  StringBuffer sb = new StringBuffer();
     public basededatos(){
         conn= new Conexion();
         cn=conn.conectar();
-        
-        
+
     }
 
      public String insert(String codigo, String email,String pass,String nombre,String apellido,String dpi,String nit){
@@ -59,35 +62,45 @@ public class basededatos {
         
 
     }
-    public String login(String email,String pass){
-        String sql = "SELECT *  FROM USUARIOS WHERE EMAIL='efraindeleon@outlook.com' AND PASS ='Aa30139428'";
+    public StringBuffer login(String email,String pass){
+       
+        PreparedStatement prstmt = null;
+        ResultSet result = null;
+        String sql = "SELECT * FROM USUARIOS WHERE EMAIL='"+email+"' AND PASS ='"+pass+"'";
         try{
+            
+     
              prstmt = cn.prepareStatement(sql); 
         
-         
-            result = prstmt.executeQuery();  
-                if(result !=null){
-                    this.usuario[0][0]=result.getString("NOMBRE");
-                    this.usuario[0][1]=result.getString("APELLIDO");
-                    return "Mundo";
-                }else{
-                    return"0";
-                }
+             result = prstmt.executeQuery();
+              if (result!=null){
+                while(result.next()){
+                sb.append(result.getString(1));
+                sb.append(result.getString(2));
+                sb.append(result.getString(3));
+                sb.append(result.getString(4));
+                sb.append(result.getString(5));
+                sb.append(result.getString(6));
+                sb.append(result.getString(7));
+              
+                }}
+              else{
+              sb=null;
+              return sb;
+              }
        }catch(SQLException e){
             String error = e.getMessage();  
             if(error.indexOf("ORA-00001") != -1){
-                return "0";
+                
             }else{
-                return "0";
+               
             }
         }
    
-        
+       return sb; 
           
     
     }
-    public String[][] obtenerUsuarios(){    
-    return this.usuario;
-}
+
 
 }

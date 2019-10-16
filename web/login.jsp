@@ -15,9 +15,10 @@
     <!-- Bootstrap CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="css/style.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script src="js/vue.js" type="text/javascript"></script>
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+  
 
     <title>Login</title>
   </head>
@@ -89,16 +90,18 @@
                     
                     
                     </form>
-                    <div id ="div-resultado">hola</div>
+                    
+                            
+                         <div id ="div-resultado">
+                            
+                             <div>
+                    
+            
                 </div>            
             </div>
         </div>
-  
-    
-     <script src="js/jquery-3.4.1.js" type="text/javascript"></script>
-     <script src="js/bootstrap.min.js" type="text/javascript"></script>
-     <script src="js/vue.js" type="text/javascript"></script>
-     <script src="js/componentes/registro.js "type="text/javascript"></script>
-   
+      
+                <script src="js/vue.js" type="text/javascript"></script>
+                <script src="js/componentes/registro.js" type="text/javascript"></script>
   </body>
 </html>-
