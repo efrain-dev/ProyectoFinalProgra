@@ -17,12 +17,12 @@
     <link rel="stylesheet" href="css/style.css">
        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    
-  
+        <script src="js/jquery-3.4.1.js" type="text/javascript"></script>
+        <script src="js/bootstrap.bundle.min.js" type="text/javascript"></script>
 
-    <title>Login</title>
+    <title id="title">Login</title>
   </head>
-  <body>
+  <body class="body">
         <script>
                  $(document).ready(function(){
                $('.navbar').load('plantillas/barra.html');
@@ -101,6 +101,6 @@
         </div>
       
                 <script src="js/vue.js" type="text/javascript"></script>
-                <script src="js/componentes/registro.js" type="text/javascript"></script>
+                <script src="js/componentes/login.js" type="text/javascript"></script>
   </body>
 </html>-

@@ -57,6 +57,7 @@ public class RespuestaLogin extends HttpServlet {
             ajaxSalida.close(); 
       
         }
+         
     }
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
