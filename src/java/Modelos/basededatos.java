@@ -26,6 +26,7 @@ public class basededatos {
     private String[][] usuario;
      List<Usuario>lista = new ArrayList<>();
     private  StringBuffer sb = new StringBuffer();
+    
     public basededatos(){
         conn= new Conexion();
         cn=conn.conectar();
@@ -71,27 +72,31 @@ public class basededatos {
             
      
              prstmt = cn.prepareStatement(sql); 
-        
+            
              result = prstmt.executeQuery();
-              if (result!=null){
-                while(result.next()){
-                sb.append("<input type=\"text\" id=\"id\"value =\""+result.getString(1)+"\">");
-                sb.append("<input type=\"text\" id=\"contra\"value =\""+result.getString(2)+"\">");
-                sb.append("<input type=\"text\" id=\"nombre\"value =\""+result.getString(3)+"\">");
-                sb.append("<input type=\"text\" id=\"apellido\"value =\""+result.getString(4)+"\">");
-                sb.append("<input type=\"text\" id=\"nit\"value =\""+result.getString(5)+"\">");
-                sb.append("<input type=\"text\" id=\"dpi\"value =\""+result.getString(6)+"\">");
-                sb.append("<input type=\"text\" id=\"email\"value =\""+result.getString(7)+"\">");
+            
               
-                }}
-              else{
-              sb=null;
-              return sb;
-              }
+                  
+
+                while(result.next()){
+            sb.append("[");    sb.append("{\"id\": \""+result.getString(1)+"\",\"contra\": \""+result.getString(2)
+                      +"\",\"nombre\": \""+result.getString(3)+"\",\"apellido\":\""+result.getString(4)
+                      +"\",\"nit\": \""+result.getString(5)+"\",\"dpi\": \""+result.getString(6)
+                      +"\",\"email\": \""+result.getString(7)+"\"}");
+	sb.append("]");
+                      
+                }
+                  System.out.println(sb);
+              
+              
+                  
+                  
+              
        }catch(SQLException e){
             String error = e.getMessage();  
             if(error.indexOf("ORA-00001") != -1){
-                
+                sb.append("ORA-00001");
+
             }else{
                
             }

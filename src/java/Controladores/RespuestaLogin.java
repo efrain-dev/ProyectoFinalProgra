@@ -1,4 +1,6 @@
 package Controladores;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 
 import Modelos.Usuario;
@@ -15,8 +17,8 @@ import javax.servlet.http.HttpServletResponse;
 
 
 public class RespuestaLogin extends HttpServlet {
-
- 
+String pa, em;
+ Gson gson = new Gson();
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
     
@@ -32,10 +34,9 @@ public class RespuestaLogin extends HttpServlet {
     
         
          
-        
-       
-         if(control.equals("INSERT")){
-
+         
+       switch(control){
+           case "INSERT":
                 codigo = request.getParameter("codigo");
                 email = request.getParameter("email");
                 pass = request.getParameter("pass");
@@ -45,19 +46,39 @@ public class RespuestaLogin extends HttpServlet {
                 nit = request.getParameter("nit");
                 
              respuesta=(bs.insert(codigo, email, pass,nombre,apellido,dpi,nit));
-              out.append(respuesta);
-               }
-         if(control.equals("LOGIN")){
-                email = request.getParameter("email");
+              out.append(respuesta);break;
+           case "LOGIN":
+                email = request.getParameter("email"); 
                 pass = request.getParameter("pass");
+                em=email; pa =pass;
                 respuestaB.append(bs.login(email, pass));
-            
+               
+           if(respuestaB.toString()!=""){
             ajaxSalida.write(respuestaB.toString());
             ajaxSalida.flush();
+            ajaxSalida.close();
+           }else{
+            String jsonArray = gson.toJson(respuestaB.toString());
+            ajaxSalida.write(jsonArray);
+            ajaxSalida.flush();
+            ajaxSalida.close();
+              
+           
+           }
+            break;
+            
+           case "RELOGIN":
+            respuestaB.append(bs.login(em, pa));
+            String jsonArrayr = gson.toJson(respuestaB.toString());
+            ajaxSalida.write(jsonArrayr);
+            ajaxSalida.flush();
             ajaxSalida.close(); 
-      
-        }
+          
          
+       }    
+      
+       
+       
     }
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

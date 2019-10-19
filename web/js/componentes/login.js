@@ -1,4 +1,4 @@
-var id,contra,nombre,apellido,dpi,nit,email;
+
 const login = new Vue({
     el:"#login",
     data:{        
@@ -26,16 +26,7 @@ const login = new Vue({
         this.dpi ="";
         this.nit ="";  
        },
-       prueba:function(){
-
-        this.codigo = id; 
-        this.password = contra;
-        this.nombre = nombre; 
-        this.apellido =apellido; 
-        this.dpi =dpi;
-        this.nit =nit;  
-        this.email= nombre;
-       },
+    
        typeC:function(){ this.type=1;},
        typeA:function(){ this.type=0;},
 
@@ -62,6 +53,7 @@ const login = new Vue({
             $.ajax({
                 type: "POST", //METODO POST
                 url: "RespuestaLogin", //URL DESTINO
+                
                 data:{
                     "control":control,
                     "codigo":this.codigo,
@@ -98,32 +90,26 @@ const login = new Vue({
             $.ajax({
                 type: "POST", //METODO POST
                 url: "RespuestaLogin", //URL DESTINO
+                dataType: "json",
                 data:{
                     "control":control,
                     "email":this.email,
                     "pass":this.password,
               
                 },      
-            success: function(data)
+            success: function(respuesta)
                    
-                {    $("#div-resultado").html(data);
-                    console.log("Hola",data);   
-                   
-                    if(data!=""){
-                        $("#mensajeLoginO").fadeToggle(3000);
-                        $("#mensajeLoginO").fadeToggle(3000);
-                        
-                        datosL();
+                {   
+                   console.log(respuesta);
+                    if(respuesta!=""){
                         rederigirRegistro();
-
-                    
                     }else{
                         $("#mensajeRegistroI").fadeToggle(3000);
                         $("#mensajeRegistroI").fadeToggle(3000);
                         
                     }
                 },
-                error: function(data) {  
+                error: function(respuesta) {  
                    
                         alert("Something went wrong");
             }
@@ -177,21 +163,9 @@ const login = new Vue({
  }
 function rederigirRegistro(){
    
-        $('.body').load('plantillas/registroH.html');
-        $("#title").html("Registros");
- }
+    var url = "registro.jsp"; 
+    $(location).attr('href',url);
+ }      
  
 
- function datosL(){
-   console.log("hola te amao xdddfxfx")
-            id = $("#id").val();
-            contra = $("#contra").val();
-            nombre = $("#nombre").val();
-            apellido = $("#apellido").val();
-            dpi = $("#dpi").val();
-            nit = $("#nit").val();
-            email = $("#email").val();
-
- }
- 
 
