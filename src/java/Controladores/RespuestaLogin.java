@@ -37,6 +37,7 @@ String pa, em;
          
        switch(control){
            case "INSERT":
+               
                 codigo = request.getParameter("codigo");
                 email = request.getParameter("email");
                 pass = request.getParameter("pass");
