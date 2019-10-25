@@ -1,4 +1,4 @@
-var id, nombre, apellido, email,contra,dpi,nit, codigoContenedor;
+﻿var id, nombre, apellido, email,contra,dpi,nit, codigoContenedor;
 $(document).ready(function() {    
   
     var control="RELOGIN"
@@ -282,3 +282,5 @@ var control ="PREVIEWREG"
 });
 
    }
+
+//nada mas que guarde xd
