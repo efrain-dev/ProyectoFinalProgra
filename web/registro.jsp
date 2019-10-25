@@ -9,11 +9,13 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-            <link rel="stylesheet" href="css/style.css">
+        <title>Registro</title>
+            <link href="css/style.css" rel="stylesheet" type="text/css"/>
+            <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
             <script src="js/jquery-3.4.1.js" type="text/javascript"></script>
             <script src="js/bootstrap.bundle.min.js" type="text/javascript"></script>
+            <link href="css/fontawesome-free-5.11.2-web/css/all.min.css" rel="stylesheet" type="text/css"/>
+
             <script>
                 $(document).ready(function(){
               $('.navbar').load('plantillas/barra.html');
@@ -21,29 +23,86 @@
            </script>
     </head>
     <body>
-            <style>
-                    .responsive {
-                      width: 100%;
-                      height: auto;
-                    }
-                </style>
-            <img src="img/CONTAINERS1.jpg" alt="Nature" class="responsive" width="600" height="100">  
-            <nav class="navbar navbar-expand navbar-dark sticky-top" style="background-color: rgb(69, 180, 0);"></nav>
-       
-                
-                        <div class=""></div>
-                        <div id="registro" class=" divlogin d-flex justify-content-center bg-dark">
-                               <div><h1 >Bienvenido  {{nombre}}  {{apellido}}</h1></div> 
-                               <div><h1 >DPI {{dpi}}  Nit {{nit}}</h1></div> 
-                        </div>
+           
+            <nav class="navbar navbar-expand navbar-dark sticky-top bg-dark"></nav>
+            <div class="divregistro row justify-content-center align-items-center">
+
+                <div class="registro my-2 mx-2 p-5 bg-dark text-white">
+                          
+                        <form class="formulario">
+                            <div class="alert alert-success" id="mensajeRegistroO" role="alert" style="display: none;" >
+                                Registro relizado Exitosamente
+                                </div> <div class="alert alert-danger" id="mensajeRegistroI" role="alert" style="display: none;" >
+                                    Datos Incorrectos
+                                </div>
+                                <div class="alert alert-danger" id="mensajeRegistroC" role="alert" style="display: none;" >
+                                    Las contraseñas no coinciden 
+                                </div>
+                              <center> <h3 class="p-3">Registro</h3> </center>  
+                           <div class="input-group form-group">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text"> <li class=" fas fa-user"></li></span> 
+                              </div>
+                                <input type="text" class="form-control" id="inputNombre" placeholder="Escriba su Nombre">
+                           </div>
+                           <div class="input-group form-group">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text"><li class=" fas fa-user"></li></span> 
+                            </div>
+                              <input type="text" class="form-control" id="inputApellido" placeholder="Escriba su apellido">
+                         </div>
+                         <div class="input-group form-group">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text"><li class=" fas fa-id-badge"></li></span> 
+                            </div>
+                              <input type="text" class="form-control" id="inputCodigo" placeholder="Ingrese su Codigo de Empleado">
+                         </div>
+                         <div class="input-group form-group">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text"> <li class=" fas fa-envelope"></li></span> 
+                                </div>
+                                  <input type="email" class="form-control" id="inputEmail" placeholder="Escriba su Email">
+                             </div>
+                         <div class="input-group form-group">
+                            <div class="input-group-prepend">           
+                                <span class="input-group-text"><i class="fas fa-key"></i></span> 
+                            </div>
+                               <input type="password" id="pass1"  class="form-control"placeholder="Ingresar Contraseña">               
+                           </div>
+                           <div class="input-group form-group">
+                            <div class="input-group-prepend">           
+                                <span class="input-group-text"><i class="fas fa-key"></i></span> 
+                            </div>
+                               <input type="password" id="pass2"  class="form-control"placeholder="Vuelva a ingresar su contraseña">               
+                           </div>
+                           <div class="input-group form-group">
+                            <div class="input-group-prepend">           
+                                <span class="input-group-text"><i class="fas fa-id-card"></i></span> 
+                            </div>
+                               <input type="text" id="inputDpi" class="form-control"placeholder="Ingrese su DPI">               
+                           </div>
+                           <div class="input-group form-group">
+                            <div class="input-group-prepend">           
+                                <span class="input-group-text"><i class="fas fa-id-card"></i></span> 
+                            </div>
+                               <input type="text" id="inputNit" class="form-control"placeholder="Ingresar su NIT">               
+                           </div>
+            
+                        <input type="button" id="btnVerificar" value="Registro" class="btn btn-info form-control">
+                     
+                        <p>Al registrarte, aceptas nuestras condiciones de uso y politica de privavidad</p>
+                        
+                        <p>¿Ya tienes una cuenta?  <a class="link" href="login.jsp">Iniciar Sesión</a> </p>
+                 
+                        </form>
 
 
-
-
-
-
-                <script src="js/vue.js" type="text/javascript"></script>
-                <script src="js/vuex.js" type="text/javascript"></script>
+                    </div>
+                </div>
+             
+        
+        
+ 
                 <script src="js/componentes/registro.js" type="text/javascript"></script>
     </body>
 </html>

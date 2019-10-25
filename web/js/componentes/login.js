@@ -1,162 +1,47 @@
 
-const login = new Vue({
-    el:"#login",
-    data:{        
-        
-            type:0, // 0 = Login , 1 = Registro 2- Recuperar contraseña
-            email:"",
-            codigo:"",
-            nombre:"",
-            apellido:"",
-            dpi:"",
-            nit:"",
-            password:"", 
-            passwordos:""
-     
-    },
-    methods:{
-        reset:function(){
+ $(document).ready(function() {
+$( "#btnLogin" ).click(function() {
 
-        this.codigo =""; 
-        this.pass =""; 
-        this.password =""; 
-        this.passwordos="";
-        this.nombre = ""; 
-        this.apellido =""; 
-        this.dpi ="";
-        this.nit ="";  
-       },
-    
-       typeC:function(){ this.type=1;},
-       typeA:function(){ this.type=0;},
-
-        sendForm(){
-            if(this.validaType()){
-                console.log(this);
-            }
-        },
-        validaType(){
-            if(this.type==0 && !this.validaEmail && !this.validaPassword){
-                return true;
-            }
-            else if(this.type==1 && !this.validaEmail && !this.validaRepetirPassword){
-                return true;
-            }
-            else if(this.type==2 && !this.validaEmail){
-                return true;
-            }
-            return false;   
-        },
-        btnRegistrar(){
-            
-            var control="INSERT", vacio="";
-            $.ajax({
-                type: "POST", //METODO POST
-                url: "RespuestaLogin", //URL DESTINO
-                
-                data:{
-                    "control":control,
-                    "codigo":this.codigo,
-                    "email":this.email,
-                    "pass":this.password,
-                    "nombre":this.nombre,
-                    "apellido":this.apellido,
-                    "dpi":this.dpi,
-                    "nit":this.nit,
-                },      
-            success: function(respuesta){    
-            
-                    if(respuesta=="1"){
-                        $("#mensajeRegistroO").fadeToggle(3000);
-                        $("#mensajeRegistroO").fadeToggle(3000);
-                        login.reset();
-                    }else{
-                        $("#mensajeRegistroI").fadeToggle(3000);
-                        $("#mensajeRegistroI").fadeToggle(3000);
-                        login.type();
-                    }
-                  
-                },
-                error: function(respuesta) {  
-                   
-                        alert("Something went wrong");
-            }
-
-        });
+    var control="LOGIN"
+    $.ajax({
+        type: "POST", //METODO POST
+        url: "RespuestaLogin", //URL DESTINO
+        dataType: "json",
+        data:{
+            "control":control,
+            "email":$("#inputEmail").val(),
+            "pass":$("#inputPass").val(),
       
-        },   
-        btnLogin(){
-            var control="LOGIN"
-            $.ajax({
-                type: "POST", //METODO POST
-                url: "RespuestaLogin", //URL DESTINO
-                dataType: "json",
-                data:{
-                    "control":control,
-                    "email":this.email,
-                    "pass":this.password,
-              
-                },      
-            success: function(respuesta)
-                   
-                {   
-                   console.log(respuesta);
-                    if(respuesta!=""){
-                        rederigirRegistro();
-                    }else{
-                        $("#mensajeRegistroI").fadeToggle(3000);
-                        $("#mensajeRegistroI").fadeToggle(3000);
-                        
-                    }
-                },
-                error: function(respuesta) {  
-                   
-                        alert("Something went wrong");
-            }
-        });          
-        },
-          
-        
-
-            },
+        },      
+    success: function(respuesta)
+           
+        {   
+           console.log(respuesta);  
+            if(respuesta!=""){
+                rederigirRegistros();
+                $("#mensajeLoginO").fadeToggle(3000);
+                $("#mensajeLoginO").fadeToggle(3000);
+            }else{
+                $("#mensajeLoginI").fadeToggle(3000);
+                $("#mensajeLoginI").fadeToggle(3000);
                 
-    computed:{
-        validaEmail(){
-            var exp = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-            if(exp.test(this.email)){
-                return false;
-            } else{
-                return true;
             }
-        },
-        validaPassword(){
-            var exp = /^(?=.*\d)(?=.*[a-záéíóúüñ]).*[A-ZÁÉÍÓÚÜÑ]/;
-            if(exp.test(this.password)){
-                return false;
-            } else{
-                return true;
-            }
-        },
-        validaRepetirPassword(){
-            if(this.password==this.passwordos){
-                return false;
-            } else{
-                return true;
-            }
-        },
-        title(){
-            return (this.type==0)?'Login':(this.type==1)?'Registro':'Recuperar contraseña';
-        
-        },
-    }
-});  
- function typea(){
-    login.typeA();
+            if(respuesta="admin"){
 
- }
- function typeC(){
-   login.typeC();
- }
+
+
+            }
+        },
+        error: function(respuesta) {  
+           
+            $("#mensajeLoginI").fadeToggle(3000);
+            $("#mensajeLoginI").fadeToggle(3000);
+    }
+});
+
+  })
+});
+
  function rederigir(){
     var url = "login.jsp"; 
     $(location).attr('href',url);
@@ -166,6 +51,15 @@ function rederigirRegistro(){
     var url = "registro.jsp"; 
     $(location).attr('href',url);
  }      
- 
+ function rederigirRegistros(){
+   
+    var url = "registros.jsp"; 
+    $(location).attr('href',url);
+ }      
+      function rederigirAdmin(){
+       
+        var url = "loginAdmin.jsp"; 
+        $(location).attr('href',url);
+     }  
 
 

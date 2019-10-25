@@ -1,89 +1,100 @@
+$(document).ready(function() {
 
-const registro = new Vue({
-    el:"#registro",
-    created: function () { 
-        var control="RELOGIN"
-        $.ajax({   
-            type: "POST", //METODO POST
-            url: "RespuestaLogin", //URL DESTINO
-            dataType: "json",
+	$("#pass2").keyup(function() {
+
+var pass1 = $("#pass1").val();
+var pass2 = $("#pass2").val();
+
+if(pass1 == pass2){
+$("#pass1").css("border-color","green"); 
+$("#pass2").css("border-color","green"); 
+}else{
+    $("#pass1").css("border-color","red"); 
+    $("#pass2").css("border-color","red"); 
+
+}
+if(pass1&&pass2==""){
+    $("#pass1").css("border-color","white"); 
+    $("#pass2").css("border-color","white"); 
+}
+});
+
+$("#btnVerificar" ).click(function() {
+    var pass1 = $("#pass1").val();
+    var pass2 = $("#pass2").val();
+
+    if(pass1 == pass2){
+        registrar();
+    }else{
+
+        $("#mensajeRegistroC").fadeToggle(3000);
+        $("#mensajeRegistroC").fadeToggle(3000);
+        $("#pass1").val("");
+        $("#pass2").val("");
+    }
+
+  });
+   
+
+  
+});
+function registrar() {
+    var control="INSERT";
+    $.ajax({
+        type: "POST", //METODO POST
+        url: "RespuestaLogin", //URL DESTINO
+        data:{
+            "control":control,
+            "codigo":$("#inputCodigo").val(),
+            "email":$("#inputEmail").val(),
+            "pass":$("#pass1").val(),
+            "nombre":$("#inputNombre").val(),
+            "apellido":$("#inputApellido").val(),
+            "dpi":$("#inputDpi").val(),
+            "nit":$("#inputNit").val(),
+        },      
+    success: function(respuesta){    
     
-            data:{
-                "control":control,
-                
+            if(respuesta=="1"){
+                $("#mensajeRegistroO").fadeToggle(3000);
+                $("#mensajeRegistroO").fadeToggle(3000);
+                reset();
+                rederigir();
+            }else{
+                $("#mensajeRegistroI").fadeToggle(3000);
+                $("#mensajeRegistroI").fadeToggle(3000);
+            }
           
-            },      
-        success: function(json)
-               
-            {   
-                var dato = JSON.parse(json);
-                console.log(json);
-                registro.setDatos(dato);
-                console.log(dato);
-                if(dato!=""){
-                    $("#mensajeLoginO").fadeToggle(3000);
-                    $("#mensajeLoginO").fadeToggle(3000);
-                   
-                    
-                
-                }else{
-                    $("#mensajeRegistroI").fadeToggle(3000);
-                    $("#mensajeRegistroI").fadeToggle(3000);
-                    
-                }
-            },
-            error: function(dato) {  
-               
-                    alert("Something went wrong");
-        }
-    });
-
-    },
-    data:{        
-        
-            type:0, // 0 = Login , 1 = Registro 2- Recuperar contraseña
-            id:"", 
-            contra:"",
-            nombre:"",
-            apellido:"",
-            dpi:"",
-            nit:"",
-            email:""
-            
-     
-    },
-    methods:{
-        getDatos:function(){
-         
-
-        
-    },
-    setDatos:function(dato){
-        for(var item of dato){
-            this.id = item.id;
-            this.contra =item.contra;
-            this.nombre = item.nombre;
-            this.apellido = item.apellido;
-            this.dpi= item.dpi;
-            this.nit =item.nit;
-            this.email = item.email;
-
-          }
-          
+        },
+        error: function(respuesta) {  
+           
+                alert("Something went wrong");
     }
-    },           
-    computed:{
-     
-    }
-});  
- function typea(){
-    login.typeA();
+})
 
- }
- function typeC(){
-   login.typeC();
- }
+}
+function reset(){
+    $("#inputNombre").val("");
+    $("#inputApellido").val("");
+    $("#inputCodigo").val("");
+    $("#inputEmail").val("");
+    $("#pass1").val("");
+    $("#pass2").val("");
+    $("#inputNit").val("");
+    $("#inputDpi").val("");
+
+}
  function rederigir(){
     var url = "login.jsp"; 
     $(location).attr('href',url);
  }
+function rederigirRegistro(){
+   
+    var url = "registro.jsp"; 
+    $(location).attr('href',url);
+ }      
+ function rederigirAdmin(){
+       
+    var url = "loginAdmin.jsp"; 
+    $(location).attr('href',url);
+ }  
