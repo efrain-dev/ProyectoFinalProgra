@@ -1,0 +1,87 @@
+
+        <div class="modal-dialog" role="document">
+          <div class="modal-content bg-dark text-white">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Registro</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                    <form enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label>Codigo</label>
+                                <input type="text" id="txtCodigo" name="Codigo"  placeholder="Ingrese el codigo del contenedor"  class="form-control"/>
+                            </div>
+                            <div class="form-group">
+                                <label>Tipo de daño</label>
+                                <select name="Tipodaño" class="form-control">
+                                    <option> Selecione el tipo daño </option>
+                                    <option value="1"> Grave </option>
+                                    <option value="2" > Leve </option>
+                                    <option value="3"> superficial </option>
+                                </select>
+                            </div>
+                            <div>
+                                <label>Area de daño</label>
+                                <select name="Areadaño" class="form-control">
+                                    <option> Selecione el area de daño </option>
+                                    <option value="1"> Interior </option>
+                                    <option value="2" > Exterior </option>
+                                    <option value="3"> Arriba </option>
+                                    <option value="4"> Abajo </option>
+                                    <option value="5"> Lado izquierdo </option>
+                                    <option value="6"> Lado derecho </option>
+                                </select>
+                            </div>                 
+                            <div>
+                                <label>Costo de reparacion</label>
+                                <input type="text" id="txtCosto" name="Costo" placeholder="Ingrese el costo de la reparacion"  class="form-control"/>
+                            </div>
+                            <div>
+                                <label>Numero de daño</label>
+                                <input type="text" id="txtDaño" name="Daño"  placeholder="Ingrese el numero de daños del contenedor"  class="form-control"/>
+                            </div>
+                            <div>
+                                <label>Causa del daño</label>
+                                <input type="text" id="txtCausa" name="Causa"  placeholder="Ingrese la causa del daño"  class="form-control"/>
+                            </div>
+                            <div>
+                                <label>Numero de mecanicos</label><br>
+                                <select name="opcionCalculadora" class="form-control">
+                                    <option> Selecione la cantidad de mecanicos </option >
+                                    <option value="1"> 1 </option >
+                                    <option value="2"> 2 </option >
+                                    <option value="3"> 3 </option >
+                                </select>
+                            </div>
+                            <div>
+                                <label>Supervisor</label>
+                                <input type="text" id="txtSuper" name="Super"  placeholder="Ingrese el nombre del supervisor"  class="form-control"/>
+                            </div>
+                            <div class="row justify-content-center align-items-center my-3 mx-3 " >
+
+                                    <div><h5>Ingrese imagen del area dañada Antes</h5></div>
+                                    <figure class="my-3 mx-3">
+                                     <img id="blah" class="imagenes" src="https://via.placeholder.com/150" alt="Tu imagen" height="150" width="300"/>
+                                    </figure>
+                                    <input id="imgInp" type="file" onchange='readImage(this);'/>
+                            </div>           
+                            <div class="row justify-content-center align-items-center my-3 mx-3 " >
+
+                                    <div><h5>Ingrese imagen del area dañada Despues</h5></div>
+                                    <figure class="my-3 mx-3">
+                                     <img id="blah2" class="imagenes" src="https://via.placeholder.com/150" alt="Tu imagen" height="150" width="300"/>
+                                    </figure>
+                                    <input id="imgInp2" type="file" onchange='readImage2(this);'/>
+                            </div>           
+            
+                        </form>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
