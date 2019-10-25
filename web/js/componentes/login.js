@@ -16,7 +16,7 @@ $( "#btnLogin" ).click(function() {
     success: function(respuesta)
            
         {   
-           console.log(respuesta);
+           console.log(respuesta);  
             if(respuesta!=""){
                 rederigirRegistros();
                 $("#mensajeLoginO").fadeToggle(3000);
@@ -25,6 +25,11 @@ $( "#btnLogin" ).click(function() {
                 $("#mensajeLoginI").fadeToggle(3000);
                 $("#mensajeLoginI").fadeToggle(3000);
                 
+            }
+            if(respuesta="admin"){
+
+
+
             }
         },
         error: function(respuesta) {  
@@ -51,6 +56,10 @@ function rederigirRegistro(){
     var url = "registros.jsp"; 
     $(location).attr('href',url);
  }      
- 
+      function rederigirAdmin(){
+       
+        var url = "loginAdmin.jsp"; 
+        $(location).attr('href',url);
+     }  
 
 

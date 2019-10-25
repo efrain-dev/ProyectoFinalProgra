@@ -56,7 +56,7 @@
                     <input type="button" id="btnLogin" value="Login" class="btn btn-info form-control">  
 
                     <p>Necesitas una cuenta <a class="link" href="registro.jsp">Registrate</a> </p>
-             
+            
                     </form>
 
 

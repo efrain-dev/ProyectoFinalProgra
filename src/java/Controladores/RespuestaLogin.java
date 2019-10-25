@@ -3,7 +3,6 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 
-import Modelos.Usuario;
 import Modelos.basededatos;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -30,11 +29,9 @@ String pa, em;
             
         response.setContentType("text/html;charset=UTF-8");
         String control,codigo, email,pass,nombre, apellido, dpi,nit; 
+        String codigoC,tipoDaño, costo,causa,mecanicos, supervisor, img1,img2,areaDaño,id; 
         control = request.getParameter("control");
     
-        
-         
-         
        switch(control){
            case "INSERT":
                
@@ -52,7 +49,7 @@ String pa, em;
                 email = request.getParameter("email"); 
                 pass = request.getParameter("pass");
                 em=email; pa =pass;
-                respuestaB.append(bs.login(email, pass));
+                    respuestaB.append(bs.login(email, pass));
                
            if(respuestaB.toString()!=""){
             ajaxSalida.write(respuestaB.toString());
@@ -73,8 +70,72 @@ String pa, em;
             String jsonArrayr = gson.toJson(respuestaB.toString());
             ajaxSalida.write(jsonArrayr);
             ajaxSalida.flush();
-            ajaxSalida.close(); 
-          
+            ajaxSalida.close();break;
+            
+           case "REGISTRO":
+                id = request.getParameter("id");
+                codigoC = request.getParameter("codigoC");
+                tipoDaño = request.getParameter("tipoDaño");
+                areaDaño = request.getParameter("areaDaño");
+                costo = request.getParameter("costo");
+                causa = request.getParameter("causa");
+                mecanicos = request.getParameter("mecanicos");
+                supervisor = request.getParameter("supervisor");
+                img1 = request.getParameter("img1");
+                img2 = request.getParameter("img2");
+               
+               respuesta=(bs.insertRegistros(id, codigoC, tipoDaño, areaDaño, costo, causa, mecanicos, supervisor, img1, img2));
+              out.append(respuesta);break;
+           case "PREVIEWREG":
+                 id = request.getParameter("id");
+               respuestaB.append(bs.previewReg(id));
+               ajaxSalida.write(respuestaB.toString());
+               ajaxSalida.flush();
+               ajaxSalida.close();
+               break;
+               
+           case "BUSCARREGISTRO":
+                 id = request.getParameter("id");
+                 codigoC = request.getParameter("codigoC");
+               respuestaB.append(bs.buscarRegistro(id, codigoC));
+               ajaxSalida.write(respuestaB.toString());
+               ajaxSalida.flush();
+               ajaxSalida.close();
+               
+               
+               break;
+           case "ADMIN":
+                email = request.getParameter("email"); 
+                pass = request.getParameter("pass");
+                em=email; pa =pass;
+                    respuestaB.append(bs.loginAdmin(email, pass));
+               
+            ajaxSalida.write(respuestaB.toString());
+            ajaxSalida.flush();
+            ajaxSalida.close();
+           
+            break;
+             case "PREVIEWREGADMIN":
+               respuestaB.append(bs.previewRegAdmin());
+               System.out.println(respuestaB);
+               ajaxSalida.write(respuestaB.toString());
+               ajaxSalida.flush();
+               ajaxSalida.close();
+               break;
+               case "BUSCARREGISTROADMIN":
+                 codigoC = request.getParameter("codigoC");
+               respuestaB.append(bs.buscarRegistroAdmin(codigoC));
+               ajaxSalida.write(respuestaB.toString());
+               ajaxSalida.flush();
+               ajaxSalida.close();
+               break;
+                case "VERUSUARIOS":
+               respuestaB.append(bs.listarUsuarios());
+               System.out.println(respuestaB);
+               ajaxSalida.write(respuestaB.toString());
+               ajaxSalida.flush();
+               ajaxSalida.close();
+               break;
          
        }    
       

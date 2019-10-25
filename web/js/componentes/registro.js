@@ -93,4 +93,8 @@ function rederigirRegistro(){
     var url = "registro.jsp"; 
     $(location).attr('href',url);
  }      
- 
+ function rederigirAdmin(){
+       
+    var url = "loginAdmin.jsp"; 
+    $(location).attr('href',url);
+ }  
