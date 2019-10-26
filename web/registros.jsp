@@ -28,14 +28,10 @@
             </script>
       
         <nav class="navbar navbar-expand navbar-dark sticky-top bg-dark"></nav>
-        <div class="presentacionU card text-center"></div>
-               <div class="">
-                   
-               </div>
+        <div class="card presentacionU">
+            
         </div>
-      <div id="divBotones">
-        <center><i class="fas fa-edit fa-6x mx-5 my-5" onclick="mostrarRegistro()">Registro</i><i class="fas fa-th-list fa-6x mx-5 my-5" onclick="mostrarPreview()">Mostrar</i></center>
-      </div> 
+     
        
       <div class="container registroDiv" id="divRegistro" style="display: none;">
           <center><i class="fas fa-edit fa-6x mx-5 my-5">Registro</i></center>
@@ -87,7 +83,7 @@
                       <option value="2"> 2 </option >
                       <option value="3"> 3 </option >
                   </select>
-              </div>
+              </div> 
               <div class="form-group">
                   <label>Supervisor</label>
                   <input type="text" id="txtSuper" name="Super"  placeholder="Ingrese el nombre del supervisor"  class="form-control"/>

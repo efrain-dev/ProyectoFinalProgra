@@ -1,4 +1,4 @@
-var id, nombre, apellido, email,contra,dpi,nit, codigoContenedor;
+﻿var id, nombre, apellido, email,contra,dpi,nit, codigoContenedor,img1, img2;
 $(document).ready(function() {    
   
     var control="RELOGIN"
@@ -17,6 +17,12 @@ $(document).ready(function() {
             var dato = JSON.parse(json);
             console.log(dato);
             setDatos(dato);
+            console.log(nombre);
+           $("#nombreUser").text(nombre+" " +apellido);
+           $("#correoUser").text(email);
+           $("#idUser").text(id);
+           $("#dpiUser").text(dpi);
+           $("#nitUser").text(nit);
             
         },
         error: function(json) {  
@@ -69,11 +75,16 @@ $("#btnSeguirRegistrando").click(function() {
     $("#divCodigoCon").show();
     $("#divBotones").fadeToggle(1000);  
     $("#divRegistro").fadeToggle(1000);
+     $("#logoPresentacion").hide();
+
     reset();
   });
   $("#btnCerrarView").click(function() {
     $("#divBotones").fadeToggle(1000);
     $("#divMostarRegistros").fadeToggle(1000);  
+    $("#logoPresentacion").hide();
+
+    
  });
 $("#btnEnviarRegistros").click(function() {
     console.log(id);
@@ -102,6 +113,7 @@ $("#btnEnviarRegistros").click(function() {
             
             if(respuesta=="1"){
                 reset();        
+                $("#logoPresentacion").hide();
                 $("#divBotones").fadeToggle(1000);  
                 $("#divRegistro").fadeToggle(1000);
                 $("#mensajeRegistroO").fadeToggle(3000);
@@ -132,6 +144,9 @@ function setDatos(dato){
         email = item.email;
 
       }
+      
+   
+     
 
 }
 function reset(){
@@ -157,9 +172,10 @@ function resetSeguir(){
     $("#imgInp2").val("");
 }
 function mostrarRegistro(){
-$("#divCodigoCon").show();
-  $("#divBotones").fadeToggle(1000);  
-  $("#divRegistro").fadeToggle(1000);
+  $("#divCodigoCon").show();
+  $("#divBotones").fadeToggle();  
+  $("#divRegistro").fadeToggle();
+  $("#logoPresentacion").show();
 }
 function seguirRegistro(){
     var control="REGISTRO";
@@ -206,10 +222,13 @@ function readImage (input) {
     if (input.files && input.files[0]) {
       var reader = new FileReader();
       reader.onload = function (e) {
-          $('#blah').attr('src', e.target.result); // Renderizamos la imagen
+          $('#blah').attr('src', e.target.result); // Renderizamos la imagen  
+          
       }
       reader.readAsDataURL(input.files[0]);
     }
+     img1 = $("#imgInp").val();
+     console.log(img1);
   }
   function readImage2 (input) {
     if (input.files && input.files[0]) {
@@ -219,6 +238,8 @@ function readImage (input) {
       }
       reader.readAsDataURL(input.files[0]);
     }
+    img1 = $("#imgInp2").val();
+    console.log(img2);
   }
 
 
@@ -241,6 +262,8 @@ function readImage (input) {
    //Muestra de datos
   function mostrarPreview(){
 var control ="PREVIEWREG"
+    $("#logoPresentacion").show();
+
     $("#divCodigoCon").show();
     $("#divBotones").fadeToggle(1000);  
     $("#divMostarRegistros").fadeToggle(1000);
@@ -264,3 +287,5 @@ var control ="PREVIEWREG"
 });
 
    }
+
+//nada mas que guarde xd
