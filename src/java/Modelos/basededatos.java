@@ -221,7 +221,8 @@ public StringBuffer previewReg(String id){
         catch(SQLException ex){
             ex.printStackTrace();
         }
-        
+        System.out.println("Adentro de el preview Registros");
+        System.out.println(sb);
         return sb;
     }
 public StringBuffer previewRegAdmin(){  

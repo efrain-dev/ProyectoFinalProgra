@@ -1,4 +1,16 @@
 body{
 
-    background-color: rgb(123, 163, 237);
+    background-color: dimgray;
+}
+.presentacionU{
+
+
+    background-image: url('../img/fondo1.jpg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+#imguser{
+
+
+    border: 4px solid black;
 }

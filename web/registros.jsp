@@ -83,8 +83,8 @@
                       <option value="2"> 2 </option >
                       <option value="3"> 3 </option >
                   </select>
-              </div> 
-              <div class="form-group">
+              </div>
+zz              <div class="form-group">
                   <label>Supervisor</label>
                   <input type="text" id="txtSuper" name="Super"  placeholder="Ingrese el nombre del supervisor"  class="form-control"/>
               </div>

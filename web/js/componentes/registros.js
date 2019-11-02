@@ -1,4 +1,4 @@
-﻿var id, nombre, apellido, email,contra,dpi,nit, codigoContenedor,img1, img2;
+﻿var id, nombre, apellido, email,contra,dpi,nit, codigoContenedor;
 $(document).ready(function() {    
   
     var control="RELOGIN"
@@ -222,13 +222,10 @@ function readImage (input) {
     if (input.files && input.files[0]) {
       var reader = new FileReader();
       reader.onload = function (e) {
-          $('#blah').attr('src', e.target.result); // Renderizamos la imagen  
-          
+          $('#blah').attr('src', e.target.result); // Renderizamos la imagen
       }
       reader.readAsDataURL(input.files[0]);
     }
-     img1 = $("#imgInp").val();
-     console.log(img1);
   }
   function readImage2 (input) {
     if (input.files && input.files[0]) {
@@ -238,8 +235,6 @@ function readImage (input) {
       }
       reader.readAsDataURL(input.files[0]);
     }
-    img1 = $("#imgInp2").val();
-    console.log(img2);
   }
 
 
